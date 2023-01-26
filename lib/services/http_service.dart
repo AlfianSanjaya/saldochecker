@@ -4,8 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:saldochecker/models/ticket_information.dart';
 
 class HttpService {
-  static Future<TicketInformation> getTicketInformation(String id) async {
-    final response = await http.get(
+  static Future<TicketInformation> getTicketInformation(
+      http.Client client, String id) async {
+    final response = await client.get(
       Uri.parse('https://www.delijn.be/api/saldo-checker/$id'),
     );
 
