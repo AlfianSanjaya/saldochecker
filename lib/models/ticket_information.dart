@@ -1,7 +1,7 @@
 import 'smart_ticket.dart';
 
 class TicketInformation {
-  final int id;
+  final String id;
   final int timestamp;
   final String validationStatus;
   final int value;
