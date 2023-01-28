@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:saldochecker/models/ticket_information.dart';
 
-class HttpService {
+class TicketService {
   static Future<TicketInformation> getTicketInformation(
       http.Client client, String id) async {
     final response = await client.get(
