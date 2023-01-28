@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import 'package:saldochecker/models/ticket_information.dart';
 
 class TicketService {
-  static Future<TicketInformation> getTicketInformation(
+  final String ticketURI = 'https://www.delijn.be/api';
+  Future<TicketInformation> getTicketInformation(
       http.Client client, String id) async {
     final response = await client.get(
-      Uri.parse('https://www.delijn.be/api/saldo-checker/$id'),
+      Uri.parse('$ticketURI/saldo-checker/$id'),
     );
 
     if (response.statusCode == 200) {
