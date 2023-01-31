@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saldochecker/saldochecker_form.dart';
 
 void main() {
   runApp(const SaldoChecker());
@@ -23,35 +24,7 @@ class SaldoChecker extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16.0),
             margin: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Container(
-                  child: const Text(
-                    'Nummer vervoerbewijs op elektronische kaart',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 500,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: 'D0021B698F5BBC2C',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  onPressed: onPressed,
-                  child: const Text('Check'),
-                )
-              ],
-            ),
+            child: SaldoCheckerForm(),
           ),
         ),
       ),
