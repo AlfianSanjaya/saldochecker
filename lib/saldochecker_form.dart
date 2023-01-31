@@ -24,10 +24,20 @@ class _SaldoCheckerFormState extends State<SaldoCheckerForm> {
     super.dispose();
   }
 
+  String? validateTicketID(ticketID) {
+    if (ticketID == null || ticketID.isEmpty) {
+      return 'Nummer is vereist';
+    }
+    // TODO: add regex check
+    return null;
+  }
+
   void onPressed() {
-    // TODO: Implement OnPressed function
-    String id = _ticketIDController.text;
-    print('Sending the id $id');
+    if (_formKey.currentState!.validate()) {
+      String id = _ticketIDController.text;
+      print('Sending the id $id');
+    }
+    // TODO: send to api
   }
 
   @override
@@ -46,11 +56,13 @@ class _SaldoCheckerFormState extends State<SaldoCheckerForm> {
             height: 20,
           ),
           Container(
+            // TODO: enter with capitals and space
             width: 500,
             child: TextFormField(
               controller: _ticketIDController,
+              validator: validateTicketID,
               decoration: const InputDecoration(
-                hintText: 'D0021B698F5BBC2C',
+                hintText: 'D002 1B69 8F5B BC2C',
                 border: OutlineInputBorder(),
               ),
             ),
