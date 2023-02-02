@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saldochecker/routes/routes.dart';
 import 'package:saldochecker/saldochecker_form.dart';
 
 void main() {
@@ -15,19 +16,10 @@ class SaldoChecker extends StatelessWidget {
       title: 'SaldoChecker App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Saldochecker"),
-        ),
-        body: Center(
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            margin: const EdgeInsets.all(16.0),
-            child: SaldoCheckerForm(),
-          ),
-        ),
-      ),
+      initialRoute: RouteManager.homePage,
+      onGenerateRoute: RouteManager.generateRoute,
     );
   }
 
