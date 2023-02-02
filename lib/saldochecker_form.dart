@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'strings.dart' as strings;
 
 class SaldoCheckerForm extends StatefulWidget {
   const SaldoCheckerForm({Key? key}) : super(key: key);
 
   @override
-  State<SaldoCheckerForm> createState() => _SaldoCheckerFormState();
+  State<SaldoCheckerForm> createState() => SaldoCheckerFormState();
 }
 
-class _SaldoCheckerFormState extends State<SaldoCheckerForm> {
+class SaldoCheckerFormState extends State<SaldoCheckerForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late TextEditingController _ticketIDController;
@@ -24,12 +25,16 @@ class _SaldoCheckerFormState extends State<SaldoCheckerForm> {
     super.dispose();
   }
 
-  String? validateTicketID(ticketID) {
+  String? validateTicketID(String? ticketID) {
+    RegExp regExp = RegExp(r'^[A-Z0-9]{16}$');
     if (ticketID == null || ticketID.isEmpty) {
-      return 'Nummer is vereist';
+      return strings.inputIsEmptyMessage;
     }
-    // TODO: add regex check
-    return null;
+    if (regExp.hasMatch(ticketID)) {
+      return null;
+    } else {
+      return strings.inputIsInvalidMessage;
+    }
   }
 
   void onPressed() {
@@ -45,7 +50,8 @@ class _SaldoCheckerFormState extends State<SaldoCheckerForm> {
     return Form(
       key: _formKey,
       child: Column(
-        children: [
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
           Container(
             child: const Text(
               'Nummer vervoerbewijs op elektronische kaart',
@@ -57,13 +63,13 @@ class _SaldoCheckerFormState extends State<SaldoCheckerForm> {
           ),
           Container(
             // TODO: enter with capitals and space
-            width: 500,
             child: TextFormField(
               controller: _ticketIDController,
               validator: validateTicketID,
               decoration: const InputDecoration(
                 hintText: 'D002 1B69 8F5B BC2C',
                 border: OutlineInputBorder(),
+                errorMaxLines: 3,
               ),
             ),
           ),
