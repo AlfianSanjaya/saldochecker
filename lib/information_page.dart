@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saldochecker/models/smart_ticket.dart';
 import 'package:saldochecker/models/ticket_information.dart';
 import 'package:saldochecker/services/ticket_service.dart';
 import 'package:intl/intl.dart';
@@ -72,6 +73,35 @@ class _InformationPageState extends State<InformationPage> {
             subtitle: Text(
               formatDate(data.timestamp),
               style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          ticketHistoryListWidget(data),
+        ],
+      ),
+    );
+  }
+
+  Widget ticketHistoryListWidget(TicketInformation data) {
+    return Expanded(
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.all(8.0),
+            child: const Text(
+              'Gereden ritten',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: data.smartTicketLineJsonList.length,
+              itemBuilder: (BuildContext context, int index) {
+                SmartTicket currentTicket = data.smartTicketLineJsonList[index];
+                return ListTile(
+                  title: Text(formatDate(currentTicket.timestamp)),
+                  subtitle: Text('${currentTicket.value} ritten resterend'),
+                );
+              },
             ),
           ),
         ],
