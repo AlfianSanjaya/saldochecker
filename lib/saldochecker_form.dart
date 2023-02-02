@@ -48,16 +48,28 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
   void onPressed() {
     if (_formKey.currentState!.validate()) {
       String id = _ticketIDController.text;
-      // TODO: open a new page with the result.
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => InformationPage(
-            ticketID: id,
-          ),
-        ),
-      );
+      Navigator.of(context).push(_createRoute(id));
     }
+  }
+
+  Route _createRoute(id) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          InformationPage(ticketID: id),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   @override
