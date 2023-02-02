@@ -23,6 +23,8 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
   void initState() {
     super.initState();
     _ticketIDController = TextEditingController();
+    // TODO: remove when done testing
+    _ticketIDController.text = 'D0021B698F5BBC2C';
   }
 
   @override
