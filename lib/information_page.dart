@@ -52,7 +52,7 @@ class _InformationPageState extends State<InformationPage> {
             title: const Text(strings.idInfo),
             subtitle: Text(
               data.id,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
@@ -62,7 +62,7 @@ class _InformationPageState extends State<InformationPage> {
             title: const Text(strings.valueInfo),
             subtitle: Text(
               data.value.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
@@ -72,7 +72,7 @@ class _InformationPageState extends State<InformationPage> {
             title: const Text(strings.latestUpdateInfo),
             subtitle: Text(
               formatDate(data.timestamp),
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
           ticketHistoryListWidget(data),
@@ -86,7 +86,7 @@ class _InformationPageState extends State<InformationPage> {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
             child: const Text(
               'Gereden ritten',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),

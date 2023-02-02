@@ -1,11 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:http/src/client.dart';
-import 'package:saldochecker/information_page.dart';
-import 'package:saldochecker/models/ticket_information.dart';
 import 'package:saldochecker/routes/routes.dart';
-import 'package:saldochecker/services/ticket_service.dart';
 import 'strings.dart' as strings;
 
 class SaldoCheckerForm extends StatefulWidget {
@@ -66,25 +60,20 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            child: const Text(
-              strings.lableTextfField,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+          const Text(
+            strings.lableTextfField,
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 20,
           ),
-          Container(
-            // TODO: enter with capitals and space
-            child: TextFormField(
-              controller: _ticketIDController,
-              validator: validateTicketID,
-              decoration: const InputDecoration(
-                hintText: 'D002 1B69 8F5B BC2C',
-                border: OutlineInputBorder(),
-                errorMaxLines: 3,
-              ),
+          TextFormField(
+            controller: _ticketIDController,
+            validator: validateTicketID,
+            decoration: const InputDecoration(
+              hintText: 'D002 1B69 8F5B BC2C',
+              border: OutlineInputBorder(),
+              errorMaxLines: 3,
             ),
           ),
           const SizedBox(

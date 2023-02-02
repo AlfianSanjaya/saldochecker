@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:saldochecker/routes/routes.dart';
 import 'package:saldochecker/saldochecker_form.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,12 +15,20 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Saldochecker"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(RouteManager.settingsPage);
+            },
+            icon: const Icon(Icons.settings),
+          )
+        ],
       ),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(16.0),
           margin: const EdgeInsets.all(16.0),
-          child: SaldoCheckerForm(),
+          child: const SaldoCheckerForm(),
         ),
       ),
     );

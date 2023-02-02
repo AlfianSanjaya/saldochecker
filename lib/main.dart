@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:saldochecker/models/settings_data.dart';
 import 'package:saldochecker/routes/routes.dart';
-import 'package:saldochecker/saldochecker_form.dart';
 
 void main() {
   runApp(const SaldoChecker());
@@ -9,21 +10,23 @@ void main() {
 class SaldoChecker extends StatelessWidget {
   const SaldoChecker({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SaldoChecker App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
-      ),
-      initialRoute: RouteManager.homePage,
-      onGenerateRoute: RouteManager.generateRoute,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SettingsData()),
+      ],
+      builder: (context, child) {
+        return MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.amber,
+          ),
+          darkTheme: ThemeData.dark(),
+          themeMode: context.watch<SettingsData>().currentThemeMode,
+          initialRoute: RouteManager.homePage,
+          onGenerateRoute: RouteManager.generateRoute,
+        );
+      },
     );
-  }
-
-  void onPressed() {
-    // TODO: Implement OnPressed function
   }
 }

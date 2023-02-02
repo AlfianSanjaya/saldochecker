@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:saldochecker/models/smart_ticket.dart';
 import 'package:saldochecker/models/ticket_information.dart';
 import 'package:test/test.dart';

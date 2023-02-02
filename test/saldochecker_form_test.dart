@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:saldochecker/saldochecker_form.dart';
-import '../lib/strings.dart' as strings;
+import 'package:saldochecker/strings.dart' as strings;
 
 void main() {
   late SaldoCheckerFormState state;

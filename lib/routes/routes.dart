@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:saldochecker/information_page.dart';
 import 'package:saldochecker/main_page.dart';
 
+import '../settings.dart';
+
 class RouteManager {
   static const String homePage = '/';
   static const String ticketDetailsPage = '/ticketDetailsPage';
   static const String settingsPage = '/settingsPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    var arguments;
+    Map<String, dynamic>? arguments;
 
     if (settings.arguments != null) {
       arguments = settings.arguments as Map<String, dynamic>;
@@ -20,9 +22,11 @@ class RouteManager {
       case ticketDetailsPage:
         return MaterialPageRoute(
             builder: (context) =>
-                InformationPage(ticketID: arguments["ticketID"]));
+                InformationPage(ticketID: arguments!["ticketID"]));
+      case settingsPage:
+        return MaterialPageRoute(builder: (context) => const Settings());
       default:
-        throw FormatException("Route not found!");
+        throw const FormatException("Route not found!");
     }
   }
 }
