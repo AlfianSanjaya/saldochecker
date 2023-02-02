@@ -1,4 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:http/src/client.dart';
+import 'package:saldochecker/information_page.dart';
+import 'package:saldochecker/models/ticket_information.dart';
+import 'package:saldochecker/services/ticket_service.dart';
 import 'strings.dart' as strings;
 
 class SaldoCheckerForm extends StatefulWidget {
@@ -40,9 +46,16 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
   void onPressed() {
     if (_formKey.currentState!.validate()) {
       String id = _ticketIDController.text;
-      print('Sending the id $id');
+      // TODO: open a new page with the result.
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => InformationPage(
+            ticketID: id,
+          ),
+        ),
+      );
     }
-    // TODO: send to api
   }
 
   @override
@@ -54,7 +67,7 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
         children: <Widget>[
           Container(
             child: const Text(
-              'Nummer vervoerbewijs op elektronische kaart',
+              strings.lableTextfField,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
@@ -78,7 +91,7 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
           ),
           ElevatedButton(
             onPressed: onPressed,
-            child: const Text('Check'),
+            child: const Text(strings.buttonText),
           )
         ],
       ),
