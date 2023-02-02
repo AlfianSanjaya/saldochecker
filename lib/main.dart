@@ -21,7 +21,7 @@ class SaldoChecker extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           title: 'Saldochecker',
-          locale: const Locale('en'),
+          locale: context.watch<SettingsData>().currentLocale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData(

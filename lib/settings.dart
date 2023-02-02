@@ -19,6 +19,7 @@ class _SettingsState extends State<Settings> {
         _dropdownValue = selectedValue;
       });
     }
+    context.read<SettingsData>().setLocale(Locale(selectedValue!));
   }
 
   @override
