@@ -11,6 +11,16 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  String _dropdownValue = 'nl';
+
+  void dropdownCallback(String? selectedValue) {
+    if (selectedValue is String) {
+      setState(() {
+        _dropdownValue = selectedValue;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +38,21 @@ class _SettingsState extends State<Settings> {
                 },
               ),
             ),
-          )
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.language),
+              title: const Text('Language'),
+              trailing: DropdownButton(
+                value: _dropdownValue,
+                items: const [
+                  DropdownMenuItem(child: Text('Nederlands'), value: 'nl'),
+                  DropdownMenuItem(child: Text('Engels'), value: 'en'),
+                ],
+                onChanged: dropdownCallback,
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -1,0 +1,8 @@
+{
+  "helloWorld": "Hello wereld!",
+  "@helloWorld": {
+    "description": "Een gewone begroeting"
+  },
+  "lableTextfField": "Nummer vervoerbewijs op elektronische kaart.",
+  "buttonText": "Check het aantal resterende ritten"
+}

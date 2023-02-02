@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saldochecker/routes/routes.dart';
 import 'strings.dart' as strings;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SaldoCheckerForm extends StatefulWidget {
   const SaldoCheckerForm({Key? key}) : super(key: key);
@@ -60,8 +61,8 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            strings.lableTextfField,
+          Text(
+            AppLocalizations.of(context)!.lableTextfField,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
@@ -81,7 +82,7 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
           ),
           ElevatedButton(
             onPressed: onPressed,
-            child: const Text(strings.buttonText),
+            child: Text(AppLocalizations.of(context)!.buttonText),
           )
         ],
       ),
