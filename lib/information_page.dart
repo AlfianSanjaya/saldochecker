@@ -3,8 +3,8 @@ import 'package:saldochecker/models/smart_ticket.dart';
 import 'package:saldochecker/models/ticket_information.dart';
 import 'package:saldochecker/services/ticket_service.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;
-import 'strings.dart' as strings;
 
 class InformationPage extends StatefulWidget {
   const InformationPage({Key? key, required this.ticketID}) : super(key: key);
@@ -38,9 +38,9 @@ class _InformationPageState extends State<InformationPage> {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
-          const Text(
-            strings.titleInfo,
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)!.ticketDetailsTitle,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -49,7 +49,7 @@ class _InformationPageState extends State<InformationPage> {
             leading: const Icon(
               Icons.credit_card,
             ),
-            title: const Text(strings.idInfo),
+            title: Text(AppLocalizations.of(context)!.ticketDetailsHeadingID),
             subtitle: Text(
               data.id,
               style: const TextStyle(fontWeight: FontWeight.bold),
@@ -59,7 +59,8 @@ class _InformationPageState extends State<InformationPage> {
             leading: const Icon(
               Icons.directions_bus_filled,
             ),
-            title: const Text(strings.valueInfo),
+            title:
+                Text(AppLocalizations.of(context)!.ticketDetailsHeadingValue),
             subtitle: Text(
               data.value.toString(),
               style: const TextStyle(fontWeight: FontWeight.bold),
@@ -69,7 +70,8 @@ class _InformationPageState extends State<InformationPage> {
             leading: const Icon(
               Icons.history,
             ),
-            title: const Text(strings.latestUpdateInfo),
+            title:
+                Text(AppLocalizations.of(context)!.ticketDetailsHeadingUpdate),
             subtitle: Text(
               formatDate(data.timestamp),
               style: const TextStyle(fontWeight: FontWeight.bold),
@@ -87,8 +89,8 @@ class _InformationPageState extends State<InformationPage> {
         children: [
           Container(
             margin: const EdgeInsets.all(8.0),
-            child: const Text(
-              'Gereden ritten',
+            child: Text(
+              AppLocalizations.of(context)!.ticketDetailsTitleHistory,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
             ),
           ),
@@ -99,7 +101,10 @@ class _InformationPageState extends State<InformationPage> {
                 SmartTicket currentTicket = data.smartTicketLineJsonList[index];
                 return ListTile(
                   title: Text(formatDate(currentTicket.timestamp)),
-                  subtitle: Text('${currentTicket.value} ritten resterend'),
+                  subtitle: Text(
+                    AppLocalizations.of(context)!
+                        .ticketDetailsListTitleHistory(currentTicket.value),
+                  ),
                 );
               },
             ),
@@ -113,7 +118,7 @@ class _InformationPageState extends State<InformationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Informatie'),
+        title: Text(AppLocalizations.of(context)!.ticketDetailsAppBarTitle),
       ),
       body: Center(
         child: FutureBuilder<TicketInformation>(

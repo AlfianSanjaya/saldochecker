@@ -1,8 +1,26 @@
 {
-  "helloWorld": "Hello wereld!",
-  "@helloWorld": {
-    "description": "Een gewone begroeting"
+  "mainTitle": "Saldochecker",
+  "mainFormlableTextField": "Nummer vervoerbewijs op elektronische kaart.",
+  "mainFormbuttonText": "Check het aantal resterende ritten",
+  "inputIsEmptyMessage": "Vul het veld in om je ritten te controleren",
+  "inputIsInvalidMessage": "Deze elektronische kaart wordt niet herkend. Controleer of je geen typfout hebt gemaakt en/of je kaart nog niet - of minder dan 24 uur geleden - is gebruikt",
+  "ticketDetailsAppBarTitle": "Controleer een andere kaart",
+  "ticketDetailsTitle": "Informatie over mijn elektrische kaart",
+  "ticketDetailsHeadingID": "Kaartnummer",
+  "ticketDetailsHeadingValue": "Aantal resterende ritten",
+  "ticketDetailsHeadingUpdate": "Laatste update",
+  "ticketDetailsTitleHistory": "Gereden ritten",
+  "ticketDetailsListTitleHistory": "{numberOfJourneys} ritten resterend",
+  "@ticketDetailsListTitleHistory": {
+    "placeholders": {
+      "numberOfJourneys": {
+        "type": "int"
+      }
+    }
   },
-  "lableTextfField": "Nummer vervoerbewijs op elektronische kaart.",
-  "buttonText": "Check het aantal resterende ritten"
+  "settingsAppBarTitle": "Instellingen",
+  "settingsTheme": "Verander van thema",
+  "settingsLanguage": "Taal",
+  "settingsLanguageNL": "Nederlands",
+  "settingsLanguageEN": "Engels"
 }

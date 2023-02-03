@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'models/settings_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -25,13 +26,15 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Instellingen')),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.settingsAppBarTitle),
+      ),
       body: Column(
         children: [
           Card(
             child: ListTile(
               leading: const Icon(Icons.dark_mode),
-              title: const Text('Switch theme'),
+              title: Text(AppLocalizations.of(context)!.settingsTheme),
               trailing: Switch(
                 value: context.watch<SettingsData>().isDarkMode(),
                 onChanged: (bool value) {
@@ -43,12 +46,18 @@ class _SettingsState extends State<Settings> {
           Card(
             child: ListTile(
               leading: const Icon(Icons.language),
-              title: const Text('Language'),
+              title: Text(AppLocalizations.of(context)!.settingsLanguage),
               trailing: DropdownButton(
                 value: _dropdownValue,
-                items: const [
-                  DropdownMenuItem(child: Text('Nederlands'), value: 'nl'),
-                  DropdownMenuItem(child: Text('Engels'), value: 'en'),
+                items: [
+                  DropdownMenuItem(
+                      child: Text(
+                          AppLocalizations.of(context)!.settingsLanguageNL),
+                      value: 'nl'),
+                  DropdownMenuItem(
+                      child: Text(
+                          AppLocalizations.of(context)!.settingsLanguageEN),
+                      value: 'en'),
                 ],
                 onChanged: dropdownCallback,
               ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:saldochecker/routes/routes.dart';
-import 'strings.dart' as strings;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SaldoCheckerForm extends StatefulWidget {
@@ -32,12 +31,12 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
   String? validateTicketID(String? ticketID) {
     RegExp regExp = RegExp(r'^[A-Z0-9]{16}$');
     if (ticketID == null || ticketID.isEmpty) {
-      return strings.inputIsEmptyMessage;
+      return AppLocalizations.of(context)!.inputIsEmptyMessage;
     }
     if (regExp.hasMatch(ticketID)) {
       return null;
     } else {
-      return strings.inputIsInvalidMessage;
+      return AppLocalizations.of(context)!.inputIsInvalidMessage;
     }
   }
 
@@ -62,8 +61,8 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Text(
-            AppLocalizations.of(context)!.lableTextfField,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            AppLocalizations.of(context)!.mainFormlableTextField,
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 20,
@@ -82,7 +81,7 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
           ),
           ElevatedButton(
             onPressed: onPressed,
-            child: Text(AppLocalizations.of(context)!.buttonText),
+            child: Text(AppLocalizations.of(context)!.mainFormbuttonText),
           )
         ],
       ),

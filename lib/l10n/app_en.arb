@@ -1,5 +1,19 @@
 {
-    "helloWorld": "Hello world!",
-    "lableTextfField": "Ticket number on electronic card.",
-    "buttonText": "Check the number of remaining trips"
+  "mainTitle": "Balance checker",
+  "mainFormlableTextField": "Ticket or travel pass number on electronic card. ",
+  "mainFormbuttonText": "Check the number of remaining journeys",
+  "inputIsEmptyMessage": "Fill in the field to check your journeys",
+  "inputIsInvalidMessage": "This electronic card is not recognized. Make sure you haven't made a typo. You can only check cards that have been used at least once. You can only check cards with validations older than 24 hours.",
+  "ticketDetailsAppBarTitle": "Check another card",
+  "ticketDetailsTitle": "Information about my electronic card",
+  "ticketDetailsHeadingID": "Card number",
+  "ticketDetailsHeadingValue": "Number of remaining journeys",
+  "ticketDetailsHeadingUpdate": "Last updated",
+  "ticketDetailsTitleHistory": "Used journeys",
+  "ticketDetailsListTitleHistory": "{numberOfJourneys} rides remaining",
+  "settingsAppBarTitle": "Settings",
+  "settingsTheme": "Switch theme",
+  "settingsLanguage": "Language",
+  "settingsLanguageNL": "Dutch",
+  "settingsLanguageEN": "English"
 }
