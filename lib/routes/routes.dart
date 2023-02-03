@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/information_page.dart';
-import 'package:saldochecker/main_page.dart';
+import 'package:saldochecker/pages/information_page.dart';
+import 'package:saldochecker/pages/main_page.dart';
 
-import '../settings.dart';
+import '../pages/settings.dart';
 
 class RouteManager {
   static const String homePage = '/';

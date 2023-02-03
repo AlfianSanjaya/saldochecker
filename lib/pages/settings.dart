@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'models/settings_data.dart';
+import '../models/settings_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Settings extends StatefulWidget {
@@ -28,6 +28,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.settingsAppBarTitle),
+        centerTitle: true,
       ),
       body: Column(
         children: [
