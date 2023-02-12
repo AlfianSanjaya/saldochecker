@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/domain/models/smart_ticket.dart';
-import 'package:saldochecker/domain/models/ticket_information.dart';
-import 'package:saldochecker/data/services/ticket_service.dart';
+import 'package:saldochecker/data/datasources/ticket_datasource.dart';
+import 'package:saldochecker/data/repositories/ticket_repository.dart';
+import 'package:saldochecker/domain/entities/smart_ticket.dart';
+import 'package:saldochecker/domain/entities/ticket_information.dart';
+//import 'package:saldochecker/data/datasources/ticket_datasource.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;
+import 'package:saldochecker/domain/usecases/get_ticket_information.dart';
 
 class InformationPage extends StatefulWidget {
   const InformationPage({Key? key, required this.ticketID}) : super(key: key);
@@ -15,15 +18,20 @@ class InformationPage extends StatefulWidget {
 }
 
 class _InformationPageState extends State<InformationPage> {
-  late TicketService service;
+  //late TicketService service;
+  late final GetTicketInformation getTicketInformation;
   late Future<TicketInformation> futureTicketInformation;
 
   @override
   void initState() {
     super.initState();
-    service = TicketService();
-    futureTicketInformation =
-        service.getTicketInformation(http.Client(), widget.ticketID);
+    getTicketInformation = GetTicketInformation(
+      TicketRepository(
+        ticketDataSource: TicketDataSource(),
+      ),
+    );
+    // futureTicketInformation =
+    //     service.getTicketInformation(http.Client(), widget.ticketID);
   }
 
   String formatDate(int milliseconds) {
@@ -122,7 +130,7 @@ class _InformationPageState extends State<InformationPage> {
       ),
       body: Center(
         child: FutureBuilder<TicketInformation>(
-          future: futureTicketInformation,
+          future: getTicketInformation.call(widget.ticketID),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ticketInformationWidget(snapshot.data!);

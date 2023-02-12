@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saldochecker/presentation/routes/routes.dart';
-import 'package:saldochecker/presentation/widgets/saldochecker_form.dart';
+import 'package:saldochecker/presentation/pages/main/saldochecker_form.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainPage extends StatefulWidget {

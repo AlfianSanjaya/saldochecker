@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:saldochecker/domain/models/ticket_information.dart';
+import 'package:saldochecker/data/models/ticket_information_model.dart';
+import 'package:saldochecker/domain/entities/ticket_information.dart';
 
-class TicketService {
+class TicketDataSource {
   final String ticketURI = 'https://www.delijn.be/api';
+
   Future<TicketInformation> getTicketInformation(
       http.Client client, String id) async {
     final response = await client.get(
@@ -12,7 +14,7 @@ class TicketService {
     );
 
     if (response.statusCode == 200) {
-      return TicketInformation.fromJson(jsonDecode(response.body));
+      return TicketInformationModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to fetch ticket information.');
     }

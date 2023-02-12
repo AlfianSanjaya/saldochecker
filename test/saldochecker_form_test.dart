@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:saldochecker/presentation/widgets/saldochecker_form.dart';
+import 'package:saldochecker/presentation/pages/main/saldochecker_form.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {

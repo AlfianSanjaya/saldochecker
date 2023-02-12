@@ -1,5 +1,6 @@
-import 'package:saldochecker/domain/models/smart_ticket.dart';
-import 'package:saldochecker/domain/models/ticket_information.dart';
+import 'package:saldochecker/data/models/ticket_information_model.dart';
+import 'package:saldochecker/domain/entities/smart_ticket.dart';
+import 'package:saldochecker/domain/entities/ticket_information.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -22,7 +23,7 @@ void main() {
         "value": 2
       };
 
-      dynamic ticketInformation = TicketInformation.fromJson(json);
+      dynamic ticketInformation = TicketInformationModel.fromJson(json);
 
       expect(ticketInformation, isA<TicketInformation>());
       expect(ticketInformation.id, "D0021B698F5BBC2C");

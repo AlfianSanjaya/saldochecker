@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../domain/models/settings_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -20,7 +18,7 @@ class _SettingsState extends State<Settings> {
         _dropdownValue = selectedValue;
       });
     }
-    context.read<SettingsData>().setLocale(Locale(selectedValue!));
+    //context.read<SettingsData>().setLocale(Locale(selectedValue!));
   }
 
   @override
@@ -32,18 +30,18 @@ class _SettingsState extends State<Settings> {
       ),
       body: Column(
         children: [
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.dark_mode),
-              title: Text(AppLocalizations.of(context)!.settingsTheme),
-              trailing: Switch(
-                value: context.watch<SettingsData>().isDarkMode(),
-                onChanged: (bool value) {
-                  context.read<SettingsData>().toggleTheme(value);
-                },
-              ),
-            ),
-          ),
+          // Card(
+          //   child: ListTile(
+          //     leading: const Icon(Icons.dark_mode),
+          //     title: Text(AppLocalizations.of(context)!.settingsTheme),
+          //     trailing: Switch(
+          //       value: context.watch<SettingsData>().isDarkMode(),
+          //       onChanged: (bool value) {
+          //         context.read<SettingsData>().toggleTheme(value);
+          //       },
+          //     ),
+          //   ),
+          // ),
           Card(
             child: ListTile(
               leading: const Icon(Icons.language),
