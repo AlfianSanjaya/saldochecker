@@ -21,6 +21,8 @@ class _SettingsPageState extends State<SettingsPage> {
       });
     }
     //context.read<SettingsData>().setLocale(Locale(selectedValue!));
+    BlocProvider.of<SettingsCubit>(context)
+        .toggleLocale(Locale(selectedValue!));
   }
 
   @override
@@ -64,7 +66,7 @@ class _SettingsPageState extends State<SettingsPage> {
               leading: const Icon(Icons.language),
               title: Text(AppLocalizations.of(context)!.settingsLanguage),
               trailing: DropdownButton(
-                value: _dropdownValue,
+                value: _dropdownValue, // TODO: fix dropdown bug
                 items: [
                   DropdownMenuItem(
                       child: Text(

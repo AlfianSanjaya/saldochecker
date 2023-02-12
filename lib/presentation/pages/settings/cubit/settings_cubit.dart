@@ -5,14 +5,20 @@ import 'package:meta/meta.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit() : super(const SettingsInitial(themeMode: ThemeMode.light));
+  SettingsCubit()
+      : super(const SettingsInitial(
+            themeMode: ThemeMode.light, locale: Locale('nl')));
 
   void toggleTheme(bool value) {
     if (value) {
-      emit(const NewSettings(themeMode: ThemeMode.dark));
+      emit(NewSettingsTheme(themeMode: ThemeMode.dark, locale: state.locale));
     } else {
-      emit(const NewSettings(themeMode: ThemeMode.light));
+      emit(NewSettingsTheme(themeMode: ThemeMode.light, locale: state.locale));
     }
+  }
+
+  void toggleLocale(Locale locale) {
+    emit(NewSettingsLocale(themeMode: state.themeMode, locale: locale));
   }
 
   @override
