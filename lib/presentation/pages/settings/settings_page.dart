@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({Key? key}) : super(key: key);
+import 'package:saldochecker/presentation/pages/settings/cubit/settings_cubit.dart';
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingsPageState extends State<SettingsPage> {
   String _dropdownValue = 'nl';
 
   void dropdownCallback(String? selectedValue) {
@@ -42,6 +44,21 @@ class _SettingsState extends State<Settings> {
           //     ),
           //   ),
           // ),
+          BlocBuilder<SettingsCubit, SettingsState>(
+            builder: (context, state) {
+              return Card(
+                  child: ListTile(
+                leading: const Icon(Icons.dark_mode),
+                title: Text(AppLocalizations.of(context)!.settingsTheme),
+                trailing: Switch(
+                  value: state.isDarkTheme,
+                  onChanged: (bool value) {
+                    toggleTheme(context, value);
+                  },
+                ),
+              ));
+            },
+          ),
           Card(
             child: ListTile(
               leading: const Icon(Icons.language),
@@ -65,5 +82,9 @@ class _SettingsState extends State<Settings> {
         ],
       ),
     );
+  }
+
+  void toggleTheme(BuildContext context, bool value) {
+    BlocProvider.of<SettingsCubit>(context).toggleTheme(value);
   }
 }

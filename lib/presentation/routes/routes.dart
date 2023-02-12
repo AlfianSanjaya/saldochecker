@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/information_page.dart';
 import '../pages/main/main_page.dart';
-
-import '../pages/settings.dart';
+import '../pages/settings/settings_page.dart';
 
 class RouteManager {
   static const String homePage = '/';
@@ -24,7 +23,7 @@ class RouteManager {
             builder: (context) =>
                 InformationPage(ticketID: arguments!["ticketID"]));
       case settingsPage:
-        return MaterialPageRoute(builder: (context) => const Settings());
+        return MaterialPageRoute(builder: (context) => const SettingsPage());
       default:
         throw const FormatException("Route not found!");
     }
