@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/presentation/routes/routes.dart';
-import 'package:saldochecker/presentation/pages/main/saldochecker_form.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../routes/routes.dart';
+import 'saldochecker_form.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

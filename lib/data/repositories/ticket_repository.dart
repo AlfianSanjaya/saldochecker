@@ -1,5 +1,5 @@
-import 'package:saldochecker/domain/entities/ticket_information.dart';
-import 'package:saldochecker/domain/repositories/ticket_repository.dart';
+import '../../domain/entities/ticket_information.dart';
+import '../../domain/repositories/ticket_repository.dart';
 import '../datasources/ticket_datasource.dart';
 import 'package:http/http.dart' as http;
 

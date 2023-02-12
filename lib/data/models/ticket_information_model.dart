@@ -1,6 +1,6 @@
-import 'package:saldochecker/data/models/smart_ticket_model.dart';
-import 'package:saldochecker/domain/entities/smart_ticket.dart';
-import 'package:saldochecker/domain/entities/ticket_information.dart';
+import '../../domain/entities/smart_ticket.dart';
+import '../../domain/entities/ticket_information.dart';
+import 'smart_ticket_model.dart';
 
 class TicketInformationModel extends TicketInformation {
   TicketInformationModel(

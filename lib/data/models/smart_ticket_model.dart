@@ -1,4 +1,4 @@
-import 'package:saldochecker/domain/entities/smart_ticket.dart';
+import '../../domain/entities/smart_ticket.dart';
 
 class SmartTicketModel extends SmartTicket {
   SmartTicketModel({

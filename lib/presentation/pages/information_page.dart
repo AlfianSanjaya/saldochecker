@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/data/datasources/ticket_datasource.dart';
-import 'package:saldochecker/data/repositories/ticket_repository.dart';
-import 'package:saldochecker/domain/entities/smart_ticket.dart';
-import 'package:saldochecker/domain/entities/ticket_information.dart';
-//import 'package:saldochecker/data/datasources/ticket_datasource.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:http/http.dart' as http;
-import 'package:saldochecker/domain/usecases/get_ticket_information.dart';
+import 'package:intl/intl.dart';
+
+import '../../domain/entities/smart_ticket.dart';
+import '../../domain/entities/ticket_information.dart';
+import 'main/bloc/ticket_bloc.dart';
 
 class InformationPage extends StatefulWidget {
   const InformationPage({Key? key, required this.ticketID}) : super(key: key);
@@ -18,22 +16,6 @@ class InformationPage extends StatefulWidget {
 }
 
 class _InformationPageState extends State<InformationPage> {
-  //late TicketService service;
-  late final GetTicketInformation getTicketInformation;
-  late Future<TicketInformation> futureTicketInformation;
-
-  @override
-  void initState() {
-    super.initState();
-    getTicketInformation = GetTicketInformation(
-      TicketRepository(
-        ticketDataSource: TicketDataSource(),
-      ),
-    );
-    // futureTicketInformation =
-    //     service.getTicketInformation(http.Client(), widget.ticketID);
-  }
-
   String formatDate(int milliseconds) {
     final DateTime timeStamp =
         DateTime.fromMillisecondsSinceEpoch(milliseconds, isUtc: true);
@@ -129,15 +111,15 @@ class _InformationPageState extends State<InformationPage> {
         title: Text(AppLocalizations.of(context)!.ticketDetailsAppBarTitle),
       ),
       body: Center(
-        child: FutureBuilder<TicketInformation>(
-          future: getTicketInformation.call(widget.ticketID),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ticketInformationWidget(snapshot.data!);
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
+        child: BlocBuilder<TicketBloc, TicketState>(
+          builder: (context, state) {
+            if (state is TicketInformationIsLoading) {
+              return const CircularProgressIndicator();
+            } else if (state is TicketInformationFetchSuccess) {
+              return ticketInformationWidget(state.ticketInformation);
+            } else {
+              return const Text('error');
             }
-            return const CircularProgressIndicator();
           },
         ),
       ),

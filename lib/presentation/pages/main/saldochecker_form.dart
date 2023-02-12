@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/presentation/routes/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../routes/routes.dart';
+import 'bloc/ticket_bloc.dart';
 
 class SaldoCheckerForm extends StatefulWidget {
   const SaldoCheckerForm({Key? key}) : super(key: key);
@@ -44,6 +47,9 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
     if (_formKey.currentState!.validate()) {
       String id = _ticketIDController.text;
       //Navigator.of(context).push(_createRoute(id));
+      BlocProvider.of<TicketBloc>(context)
+          .add(TicketInformationRequested(id: id));
+
       Navigator.of(context).pushNamed(
         RouteManager.ticketDetailsPage,
         arguments: {

@@ -1,5 +1,5 @@
-import 'package:saldochecker/domain/entities/ticket_information.dart';
-import 'package:saldochecker/domain/repositories/ticket_repository.dart';
+import '../entities/ticket_information.dart';
+import '../repositories/ticket_repository.dart';
 
 class GetTicketInformation {
   final ITicketRepository repository;
