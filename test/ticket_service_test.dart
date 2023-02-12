@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:saldochecker/models/ticket_information.dart';
-import 'package:saldochecker/services/ticket_service.dart';
+import 'package:saldochecker/domain/models/ticket_information.dart';
+import 'package:saldochecker/data/services/ticket_service.dart';
 
 import 'ticket_service_test.mocks.dart';
 

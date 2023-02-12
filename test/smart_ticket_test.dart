@@ -1,4 +1,4 @@
-import 'package:saldochecker/models/smart_ticket.dart';
+import 'package:saldochecker/domain/models/smart_ticket.dart';
 import 'package:test/test.dart';
 
 void main() {

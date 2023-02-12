@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/models/smart_ticket.dart';
-import 'package:saldochecker/models/ticket_information.dart';
-import 'package:saldochecker/services/ticket_service.dart';
+import 'package:saldochecker/domain/models/smart_ticket.dart';
+import 'package:saldochecker/domain/models/ticket_information.dart';
+import 'package:saldochecker/data/services/ticket_service.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;

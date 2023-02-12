@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:saldochecker/models/settings_data.dart';
-import 'package:saldochecker/routes/routes.dart';
+import 'package:saldochecker/domain/models/settings_data.dart';
+import 'package:saldochecker/presentation/routes/routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {

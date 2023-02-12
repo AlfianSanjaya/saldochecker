@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:saldochecker/models/ticket_information.dart';
+import 'package:saldochecker/domain/models/ticket_information.dart';
 
 class TicketService {
   final String ticketURI = 'https://www.delijn.be/api';

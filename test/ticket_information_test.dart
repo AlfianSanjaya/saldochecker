@@ -1,5 +1,5 @@
-import 'package:saldochecker/models/smart_ticket.dart';
-import 'package:saldochecker/models/ticket_information.dart';
+import 'package:saldochecker/domain/models/smart_ticket.dart';
+import 'package:saldochecker/domain/models/ticket_information.dart';
 import 'package:test/test.dart';
 
 void main() {

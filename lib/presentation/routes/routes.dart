@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saldochecker/pages/information_page.dart';
-import 'package:saldochecker/pages/main_page.dart';
+import 'package:saldochecker/presentation/pages/information_page.dart';
+import 'package:saldochecker/presentation/pages/main_page.dart';
 
 import '../pages/settings.dart';
 
