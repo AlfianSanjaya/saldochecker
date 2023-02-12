@@ -12,7 +12,11 @@ abstract class SettingsState {
 
   @override
   String toString() =>
-      'SettingsState(themeMode: $themeMode , isDarkTheme: $isDarkTheme)';
+      '''SettingsState(
+          themeMode: $themeMode,
+          isDarkTheme: $isDarkTheme),
+          locale: $locale
+      ''';
 }
 
 class SettingsInitial extends SettingsState {

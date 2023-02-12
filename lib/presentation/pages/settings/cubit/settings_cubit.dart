@@ -23,7 +23,6 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   @override
   void onChange(Change<SettingsState> change) {
-    // TODO: implement onChange
     print(change);
     super.onChange(change);
   }

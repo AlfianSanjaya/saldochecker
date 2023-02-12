@@ -12,17 +12,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  String _dropdownValue = 'nl';
-
-  void dropdownCallback(String? selectedValue) {
-    if (selectedValue is String) {
-      setState(() {
-        _dropdownValue = selectedValue;
-      });
-    }
-    //context.read<SettingsData>().setLocale(Locale(selectedValue!));
-    BlocProvider.of<SettingsCubit>(context)
-        .toggleLocale(Locale(selectedValue!));
+  void toggleTheme(BuildContext context, bool value) {
+    BlocProvider.of<SettingsCubit>(context).toggleTheme(value);
   }
 
   @override
@@ -32,23 +23,11 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Text(AppLocalizations.of(context)!.settingsAppBarTitle),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          // Card(
-          //   child: ListTile(
-          //     leading: const Icon(Icons.dark_mode),
-          //     title: Text(AppLocalizations.of(context)!.settingsTheme),
-          //     trailing: Switch(
-          //       value: context.watch<SettingsData>().isDarkMode(),
-          //       onChanged: (bool value) {
-          //         context.read<SettingsData>().toggleTheme(value);
-          //       },
-          //     ),
-          //   ),
-          // ),
-          BlocBuilder<SettingsCubit, SettingsState>(
-            builder: (context, state) {
-              return Card(
+      body: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              Card(
                   child: ListTile(
                 leading: const Icon(Icons.dark_mode),
                 title: Text(AppLocalizations.of(context)!.settingsTheme),
@@ -58,35 +37,34 @@ class _SettingsPageState extends State<SettingsPage> {
                     toggleTheme(context, value);
                   },
                 ),
-              ));
-            },
-          ),
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.language),
-              title: Text(AppLocalizations.of(context)!.settingsLanguage),
-              trailing: DropdownButton(
-                value: _dropdownValue, // TODO: fix dropdown bug
-                items: [
-                  DropdownMenuItem(
-                      child: Text(
-                          AppLocalizations.of(context)!.settingsLanguageNL),
-                      value: 'nl'),
-                  DropdownMenuItem(
-                      child: Text(
-                          AppLocalizations.of(context)!.settingsLanguageEN),
-                      value: 'en'),
-                ],
-                onChanged: dropdownCallback,
+              )),
+              Card(
+                child: ListTile(
+                  leading: const Icon(Icons.language),
+                  title: Text(AppLocalizations.of(context)!.settingsLanguage),
+                  trailing: DropdownButton(
+                    value: state.locale.toString(),
+                    items: [
+                      DropdownMenuItem(
+                          child: Text(
+                              AppLocalizations.of(context)!.settingsLanguageNL),
+                          value: 'nl'),
+                      DropdownMenuItem(
+                          child: Text(
+                              AppLocalizations.of(context)!.settingsLanguageEN),
+                          value: 'en'),
+                    ],
+                    onChanged: (String? value) {
+                      BlocProvider.of<SettingsCubit>(context)
+                          .toggleLocale(Locale(value!));
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
-  }
-
-  void toggleTheme(BuildContext context, bool value) {
-    BlocProvider.of<SettingsCubit>(context).toggleTheme(value);
   }
 }
