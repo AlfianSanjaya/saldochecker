@@ -78,7 +78,6 @@ class SaldoCheckerFormState extends State<SaldoCheckerForm> {
             validator: validateTicketID,
             decoration: const InputDecoration(
               hintText: 'D002 1B69 8F5B BC2C',
-              border: OutlineInputBorder(),
               errorMaxLines: 3,
             ),
           ),

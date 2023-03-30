@@ -31,7 +31,8 @@ class SaldoChecker extends StatelessWidget {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: ThemeData(
-              primarySwatch: Colors.amber,
+              useMaterial3: true,
+              colorSchemeSeed: Colors.amber,
             ),
             darkTheme: ThemeData.dark(),
             themeMode: state.themeMode,
