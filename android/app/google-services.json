@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "412387496472",
+    "project_id": "saldochecker",
+    "storage_bucket": "saldochecker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412387496472:android:cdbcd9b9b3d4fe2afe296d",
+        "android_client_info": {
+          "package_name": "com.example.saldochecker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412387496472-73d143djh9r9i8hsdkdv0621du125727.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1LXRuKU9AN_FuOqJWvupVaqLqnV2uXM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412387496472-73d143djh9r9i8hsdkdv0621du125727.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
